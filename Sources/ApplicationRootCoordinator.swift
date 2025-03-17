@@ -2,14 +2,15 @@ import Foundation
 
 import SwiftUI
 
-open class ApplicationRootCoordinator<T: BaseCoordinator>: BaseCoordinator {
-    var childCoordinator: T
+@Observable
+final class ApplicationRootCoordinator<T: BaseCoordinator>: BaseCoordinator {
+    var childCoordinator: any BaseCoordinator
 
     init(childCoordinator: T) {
         self.childCoordinator = childCoordinator
     }
 
     public func view() -> some View {
-        childCoordinator.view()
+        AnyView(childCoordinator.view())
     }
 }

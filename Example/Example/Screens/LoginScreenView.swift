@@ -7,6 +7,10 @@ struct LoginScreenView: ScreenView {
         VStack(spacing: 40) {
             Text("LoginScreenView")
 
+            Button("Login") {
+                AuthenticationManager.shared.login()
+            }
+
             Button("Forgot password?") {
                 onGoRestorePassword?()
             }
